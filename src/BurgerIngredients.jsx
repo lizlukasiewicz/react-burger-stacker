@@ -1,10 +1,10 @@
 import { Component } from 'react'
 
-export default class ClearBurger extends Component {
+export default class BurgerIngredients extends Component {
     render() {
         return(
             <div>
-                <h4>Clear dem burgerz</h4>
+                <h4>Burger Ingredients 🍔</h4>
             </div>
         )
     }

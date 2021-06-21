@@ -21,29 +21,13 @@ const ingredients = [
 
 export default class App extends Component {
   render() {
-    const list = ingredients.map((ingredient, index) => {
-      console.log(`current array index is ${index}`)
-      return <IngredientList
-      name={ingredient.name}
-      key={index}
-      />
-    })
-    console.log(list)
-    const burger = ingredients.map((color, index) => {
-      console.log(`current color array ${index}🌈 `)
-      return <BurgerPane 
-      color={color.color}
-      key={index}
-      />
-    })
-    console.log(burger)
     return(
-      <div id="home">
+      <div id="home" style={{display:'flex', alignItems:'flex-end'}} >
         <div id="burger">
         This is <BurgerPane />
         </div>
         <div id="ingredient">
-        This is <IngredientList />
+        This is <IngredientList ingredients={ingredients}/>
         </div>
       </div>
     )
