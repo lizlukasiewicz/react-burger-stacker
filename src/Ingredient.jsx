@@ -1,10 +1,11 @@
 import { Component } from 'react'
 
+
 export default class Ingredient extends Component {
     render () {
         return(
         <div>
-        <p style={{backgroundColor: this.props.color}} >{this.props.ingredient}  </p>  
+        <p style={{backgroundColor: this.props.color}}>{this.props.ingredient} <button onClick= {this.props.addIngredients} value={this.props.ingredient}> Add to stack</button></p> 
         </div>
         )
     }

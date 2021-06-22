@@ -4,6 +4,7 @@ import './App.css';
 import BurgerPane from "./BurgerPane.jsx"
 import IngredientList from "./IngredientList.jsx"
 
+
 const ingredients = [
   {name: 'Kaiser Bun', color: 'saddlebrown'},
   {name: 'Sesame Bun', color: 'sandybrown'},
@@ -20,14 +21,41 @@ const ingredients = [
 ]
 
 export default class App extends Component {
+  constructor(props) {
+    super()
+    this.state = {
+      clickedIngredients: [],
+    }
+  }
+  addIngredients = (e) => {
+    //get value of clicked ingredient and color
+    const newIngredient = {name: e.target.innerText, color: e.target.style.backgroundColor }
+    //create a new array with current clickedIngredients status and append new ingredient]]
+    const updatedClickedIng = this.state.clickedIngredients.concat(newIngredient)
+    //setState with new clickIngredients array
+    this.setState({
+      clickedIngredients: updatedClickedIng
+    })
+    // let currentIngredient = this.state.clickedIngredients
+    // currentIngredient.push(e.target.value
+  }
+  clearBurger = (e) => {
+    this.setState({
+      clickedIngredients: []
+    })
+  }
+
   render() {
     return(
       <div id="home" style={{display:'flex', alignItems:'flex-end'}} >
-        <div id="burger">
-        This is <BurgerPane />
-        </div>
         <div id="ingredient">
-        This is <IngredientList ingredients={ingredients}/>
+        This is <IngredientList 
+        ingredients={ingredients}
+        addIngredients={this.addIngredients}
+        />
+        </div>
+        <div id="burger">
+        This is app <BurgerPane clickedIngredients={this.state.clickedIngredients} clearBurger={this.clearBurger}/>
         </div>
       </div>
     )
