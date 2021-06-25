@@ -1,6 +1,6 @@
-import { Component } from 'react'
+import { useState } from 'react'
 import './App.css';
-
+import React from 'react'
 import BurgerPane from "./BurgerPane.jsx"
 import IngredientList from "./IngredientList.jsx"
 
@@ -20,44 +20,33 @@ const ingredients = [
   {name: 'Onion', color: 'lightyellow'}
 ]
 
-export default class App extends Component {
-  constructor(props) {
-    super()
-    this.state = {
-      clickedIngredients: [],
-    }
-  }
-  addIngredients = (e) => {
-    //get value of clicked ingredient and color
-    const newIngredient = {name: e.target.innerText, color: e.target.style.backgroundColor }
-    //create a new array with current clickedIngredients status and append new ingredient]]
-    const updatedClickedIng = this.state.clickedIngredients.concat(newIngredient)
-    //setState with new clickIngredients array
-    this.setState({
-      clickedIngredients: updatedClickedIng
-    })
+const App = () => {
+  const [burgerIngredients, setBurgerIngredients] = useState([])
+  
+    const addToBurger = (e) => {
+      const newIngredient = {
+        name: e.target.innerText, 
+        color: e.target.style.backgroundColor 
+      }
+      const newBurger = burgerIngredients.concat(newIngredient)
+    setBurgerIngredients(newBurger)
     // let currentIngredient = this.state.clickedIngredients
     // currentIngredient.push(e.target.value
   }
-  clearBurger = (e) => {
-    this.setState({
-      clickedIngredients: []
-    })
+
+  const clearBurger = (e) => {
+    setBurgerIngredients([])
   }
 
-  render() {
-    return(
-      <div id="home" style={{display:'flex', alignItems:'flex-end'}} >
-        <div id="ingredient">
-        This is <IngredientList 
-        ingredients={ingredients}
-        addIngredients={this.addIngredients}
-        />
-        </div>
-        <div id="burger">
-        This is app <BurgerPane clickedIngredients={this.state.clickedIngredients} clearBurger={this.clearBurger}/>
-        </div>
-      </div>
-    )
-  }
+  
+  return(
+    <div id="home" style={{display:'flex', alignItems:'flex-end'}} >
+      <IngredientList 
+      ingredients={ingredients}
+      addToBurger={addToBurger}
+      />
+      <BurgerPane burgerIngredients={burgerIngredients} clearBurger={clearBurger}/>
+    </div>
+  )
 }
+export default App

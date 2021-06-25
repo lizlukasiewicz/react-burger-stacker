@@ -1,16 +1,16 @@
-import { Component } from 'react'
+import React from 'react'
 
 
-export default class Ingredient extends Component {
-    render () {
-        return(
-        <div>
-        <p style={{backgroundColor: this.props.color}}>{this.props.ingredient} <button onClick= {this.props.addIngredients} value={this.props.ingredient}> Add to stack</button></p> 
-        </div>
-        )
-    }
+const Ingredient = (props) => {
+    return(
+        <p style={{backgroundColor: props.color}}>
+            {props.ingredient} 
+        </p> 
+    )
+
 }
-
+export default Ingredient
+//<button onClick= {props.addIngredients} value={props.ingredient}> Add to stack</button>
 // const ingredientComponents = this.props.ingredients.map((ingredient, index) => {
 //     console.log(`current array index is ${index}`)
 //     return <IngredientList

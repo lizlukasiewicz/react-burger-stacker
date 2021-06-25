@@ -1,11 +1,9 @@
-import { Component } from 'react'
+import React from 'react'
 
-export default class BurgerIngredients extends Component {
-    render() {
-        return(
-            <div>
-                
-            </div>
-        )
-    }
+const BurgerIngredients= (props) => {
+    return(
+        <div>
+            
+        </div>
+    )
 }
